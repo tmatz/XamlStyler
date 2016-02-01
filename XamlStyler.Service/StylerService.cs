@@ -164,7 +164,7 @@ namespace XamlStyler.Core
             string currentIndentString = GetIndentString(xmlReader.Depth);
             string content = xmlReader.Value.Trim();
 
-            if (!output.EndsWith("\n"))
+            if (output.Length > 0 && !output.EndsWith("\n"))
             {
                 output += Environment.NewLine;
             }
