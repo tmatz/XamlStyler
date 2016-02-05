@@ -36,6 +36,14 @@ namespace XamlStyler.UnitTests
         }
 
         [TestMethod]
+        public void TestCommentAtRoot()
+        {
+            string testInput = MethodBase.GetCurrentMethod().Name + ".xaml";
+
+            DoTest(testInput);
+        }
+
+        [TestMethod]
         public void TestDefaultHandling()
         {
             string testInput = MethodBase.GetCurrentMethod().Name + ".xaml";
