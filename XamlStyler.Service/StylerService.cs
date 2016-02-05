@@ -169,6 +169,13 @@ namespace XamlStyler.Core
                 output += Environment.NewLine;
             }
 
+            // My project specific change: comment at root is not changed.
+            if (xmlReader.Depth == 0)
+            {
+                output += "<!--" + xmlReader.Value.Replace("\n", Environment.NewLine) + "-->";
+                return;
+            }
+
             if (content.Contains("\n"))
             {
                 output += currentIndentString + "<!--";
