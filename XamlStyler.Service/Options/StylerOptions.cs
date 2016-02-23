@@ -20,15 +20,15 @@ namespace XamlStyler.Core.Options
             MaxAttributeCharatersPerLine = 0;
             NoNewLineElements =
                 "RadialGradientBrush, GradientStop, LinearGradientBrush, ScaleTransfom, SkewTransform, RotateTransform, TranslateTransform, Trigger, Condition, Setter";
-            PutEndingBracketOnNewLine = false;
+            PutEndingBracketOnNewLine = true;
             RemoveEndingTagOfEmptyElement = true;
-            KeepFirstAttributeOnSameLine = true;
+            KeepFirstAttributeOnSameLine = false;
 
             #endregion New Line
 
             #region Markup Extension
 
-            FormatMarkupExtension = true;
+            FormatMarkupExtension = false;
 
             #endregion Markup Extension
 
@@ -162,7 +162,7 @@ namespace XamlStyler.Core.Options
         [Description(
             "Defines whether to format markup extension.\r\nDefalut Value: true\r\nWhen this setting is true, attributes with markup extension will always be put on a new line, UNLESS the element is under AttributesTolerance or one of the NoNewLineElements."
             )]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool FormatMarkupExtension { get; set; }
 
         #endregion Markup Extension
@@ -182,7 +182,7 @@ namespace XamlStyler.Core.Options
         [Description(
             "Defines whether the first line of attribute(s) shall appear on the same line as the element's start tag.\r\ne.g., when this setting is true\r\n\r\nBEFORE BEAUTIFY:\r\n\"<element a='xyz' b='xyz'>  </element>\"\r\n\r\nAFTER BEAUTIFY:\r\n\"<element a='xyz'\r\n        b='xyz'>\r\n</element>\"\r\n\r\nDefault Value: true"
             )]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool KeepFirstAttributeOnSameLine { get; set; }
 
         [Category("New Line")]
@@ -214,7 +214,7 @@ namespace XamlStyler.Core.Options
         [Category("New Line")]
         [DisplayName("Put ending bracket on new line")]
         [Description("Defines whether to put \">\" or \"/>\" on a new line.\r\nDefault Value: false")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool PutEndingBracketOnNewLine { get; set; }
 
         [Category("New Line")]
