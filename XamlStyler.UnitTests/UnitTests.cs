@@ -6,13 +6,23 @@ using XamlStyler.Core.Options;
 
 namespace XamlStyler.UnitTests
 {
+    public class TestStylerOptions : StylerOptions
+    {
+        public TestStylerOptions()
+        {
+            FormatMarkupExtension = true;
+            KeepFirstAttributeOnSameLine = true;
+            PutEndingBracketOnNewLine = false;
+        }
+    }
+
     [TestFixture]
     public class UnitTests
     {
         [Test]
         public void TestAttributeThresholdHandling()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 AttributesTolerance = 0,
                 MaxAttributeCharatersPerLine = 80,
@@ -26,7 +36,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestAttributeToleranceHandling()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 AttributesTolerance = 3,
                 RootElementLineBreakRule = LineBreakRule.Always,
@@ -56,7 +66,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestAttributeSortingOptionHandling()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 AttributeOrderClass = "x:Class",
                 AttributeOrderWpfNamespace = "xmlns, xmlns:x",
@@ -80,7 +90,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestxBindSplitting()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 KeepxBindOnSameLine = true
             };
@@ -91,7 +101,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestBindingSplitting()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 KeepBindingsOnSameLine = true
             };
@@ -102,7 +112,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestMarkupExtensionHandling()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 FormatMarkupExtension = true
             };
@@ -113,7 +123,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestMarkupWithAttributeNotOnFirstLine()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 KeepFirstAttributeOnSameLine = false,
                 AttributesTolerance = 1
@@ -168,7 +178,7 @@ namespace XamlStyler.UnitTests
         [Test]
         public void TestAttributeOrderRuleGroupsOnSeparateLinesHandling()
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 PutAttributeOrderRuleGroupsOnSeparateLines = true,
                 MaxAttributesPerLine = 3,
@@ -182,7 +192,7 @@ namespace XamlStyler.UnitTests
         [TestCase(3, ReorderSettersBy.TargetNameThenProperty)]
         public void TestReorderSetterHandling(int testNumber, ReorderSettersBy reorderSettersBy)
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 ReorderSetters = reorderSettersBy,
             };
@@ -194,7 +204,7 @@ namespace XamlStyler.UnitTests
         [TestCase(2, false)]
         public void TestClosingElementHandling(int testNumber, bool spaceBeforeClosingSlash)
         {
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
             {
                 SpaceBeforeClosingSlash = spaceBeforeClosingSlash
             };
@@ -205,7 +215,7 @@ namespace XamlStyler.UnitTests
         private void DoTest([System.Runtime.CompilerServices.CallerMemberName] string callerMemberName = "")
         {
             // ReSharper disable once ExplicitCallerInfoArgument
-            DoTest(new StylerOptions(), callerMemberName);
+            DoTest(new TestStylerOptions(), callerMemberName);
         }
 
         private void DoTest(StylerOptions stylerOptions, [System.Runtime.CompilerServices.CallerMemberName] string callerMemberName = "")
