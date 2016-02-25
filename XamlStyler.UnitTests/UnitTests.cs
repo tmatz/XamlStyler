@@ -9,12 +9,22 @@ namespace XamlStyler.UnitTests
     [TestClass]
     public class UnitTests
     {
+        public class TestStylerOptions : StylerOptions
+        {
+            public TestStylerOptions()
+            {
+                FormatMarkupExtension = true;
+                KeepFirstAttributeOnSameLine = true;
+                PutEndingBracketOnNewLine = false;
+            }
+        }
+
         [TestMethod]
         public void TestAttributeThresholdHandling()
         {
             string testInput = MethodBase.GetCurrentMethod().Name + ".xaml";
 
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
                                     {
                                         AttributesTolerance = 0,
                                         MaxAttributeCharatersPerLine = 80,
@@ -48,7 +58,7 @@ namespace XamlStyler.UnitTests
         {
             string testInput = MethodBase.GetCurrentMethod().Name + ".xaml";
 
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
                                     {
                                         AttributeOrderClass = "x:Class",
                                         AttributeOrderWpfNamespace = "xmlns, xmlns:x",
@@ -75,7 +85,7 @@ namespace XamlStyler.UnitTests
         {
             string testInput = MethodBase.GetCurrentMethod().Name + ".xaml";
 
-            var stylerOptions = new StylerOptions
+            var stylerOptions = new TestStylerOptions
                                     {
                                         FormatMarkupExtension = true
                                     };
@@ -102,7 +112,7 @@ namespace XamlStyler.UnitTests
 
         private void DoTest(string testInput)
         {
-            DoTest(testInput, StylerService.CreateInstance(new StylerOptions()));
+            DoTest(testInput, StylerService.CreateInstance(new TestStylerOptions()));
         }
 
         private void DoTest(string testInput, StylerService styler)
