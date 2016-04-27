@@ -86,6 +86,12 @@ namespace Xavalon.XamlStyler.UnitTests
         }
 
         [Test]
+        public void TestCommentAtRoot()
+        {
+            DoTest();
+        }
+
+        [Test]
         public void TestDefaultHandling()
         {
             this.DoTest();

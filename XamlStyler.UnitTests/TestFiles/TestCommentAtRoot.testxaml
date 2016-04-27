@@ -1,0 +1,10 @@
+﻿<!-- comment
+at root
+  is not changed. -->
+<!--
+
+      comment at root is not changed.
+
+-->
+<!--    comment at root is not changed     -->
+<Root />

@@ -263,6 +263,12 @@
     <None Include="TestFiles\TestClosingElementHandling_1.expected">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="TestFiles\TestCommentAtRoot.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\TestCommentAtRoot.testxaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="TestFiles\TestCommentHandling_2.expected">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

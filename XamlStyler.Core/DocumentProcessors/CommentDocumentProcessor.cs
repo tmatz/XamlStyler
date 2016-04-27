@@ -34,6 +34,17 @@ namespace Xavalon.XamlStyler.Core.DocumentProcessors
                 output.Append(Environment.NewLine);
             }
 
+            // My project specific change: comment at root is not changed.
+            if (xmlReader.Depth == 0)
+            {
+                output
+                    .Append("<!--")
+                    .Append(content.Replace("\n", Environment.NewLine))
+                    .Append("-->");
+
+                return;
+            }
+
             if (content.Contains("<") && content.Contains(">"))
             {
                 output.Append(currentIndentString);
